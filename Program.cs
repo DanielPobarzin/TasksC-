@@ -1,39 +1,41 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 class Program
-{
+{          
     static void Main()
     {
-        int n = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
         for (int i = 0; i < n; i++)
         {
-            string line = Console.ReadLine();
-            string[] numbers = line.Split(' ');
-            int day = int.Parse(numbers[0]);
-            int month = int.Parse(numbers[1]);
-            int year = int.Parse(numbers[2]);
-            bool isValidDate = IsValidDate(day, month, year);
-            if (isValidDate)
+            string line = Convert.ToString(Console.ReadLine());
+            string[] carNumbers = new string[line.Length];
+            for(int j=0; j < line.Length; j++)
             {
-                Console.WriteLine("YES");
-            }
-            else
-            {
-                Console.WriteLine("NO");
+             carNumbers[j] = line[j].ToString();
+            }  
+           if (carNumbers.Length == CheckCarNumbers(carNumbers).Replace(" ","").Length){
+                Console.WriteLine($"{CheckCarNumbers(carNumbers)}");
+            } else {
+                    Console.WriteLine("-");   
             }
         }
     }
-
-    static bool IsValidDate(int day, int month, int year)
+    static string CheckCarNumbers(string[] carNumbers)
     {
-        if ( day > DateTime.DaysInMonth(year, month))
+        string patternOne = @"^[A-Z]\d{2}[A-Z]{2}$"; 
+        string patternTwo = @"^[A-Z]\d[A-Z]{2}$"; 
+        string result = "";
+        string currentCarNumber = "";
+        for (int i = 0; i < carNumbers.Length; i++)
         {
-            return false;
+            currentCarNumber += carNumbers[i];
+            if ((Regex.IsMatch(currentCarNumber, patternOne) || Regex.IsMatch(currentCarNumber, patternTwo))&& currentCarNumber.Length >=4)
+            {
+                result += currentCarNumber + " ";
+                currentCarNumber = "";
+            }
         }
-        if (month == 2 && day == 29 && !DateTime.IsLeapYear(year))
-        {
-            return false;
-        }
-        return true;
+        return result;
     }
 }
