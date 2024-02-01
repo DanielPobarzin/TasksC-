@@ -1,41 +1,125 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 class Program
-{          
-    static void Main()
+{
+    static void Main(string[] args)
     {
-        int n = Convert.ToInt32(Console.ReadLine());
-        for (int i = 0; i < n; i++)
+        int tests = int.Parse(Console.ReadLine());
+
+        for (int t = 0; t < tests; t++)
         {
-            string line = Convert.ToString(Console.ReadLine());
-            string[] carNumbers = new string[line.Length];
-            for(int j=0; j < line.Length; j++)
+            string[] size = Console.ReadLine().Split();
+            int rows = int.Parse(size[0]);
+            int columns = int.Parse(size[1]);
+
+            char[,] field = new char[rows, columns];
+
+            for (int i = 0; i < rows; i++)
             {
-             carNumbers[j] = line[j].ToString();
-            }  
-           if (carNumbers.Length == CheckCarNumbers(carNumbers).Replace(" ","").Length){
-                Console.WriteLine($"{CheckCarNumbers(carNumbers)}");
-            } else {
-                    Console.WriteLine("-");   
+                string line = Console.ReadLine();
+                for (int j = 0; j < columns; j++)
+                {
+                    field[i, j] = line[j];
+                }
             }
+
+            int rectangles = CountRectangles(field);
+                        Console.WriteLine(rectangles);
+            List<int> nestedCounts = CountNestedRectangles(field, rectangles);
+
+            nestedCounts.Sort();
+
+            foreach (int count in nestedCounts)
+            {
+                Console.Write(count + " ");
+            }
+            Console.WriteLine();
         }
     }
-    static string CheckCarNumbers(string[] carNumbers)
+
+    static int CountRectangles(char[,] field)
     {
-        string patternOne = @"^[A-Z]\d{2}[A-Z]{2}$"; 
-        string patternTwo = @"^[A-Z]\d[A-Z]{2}$"; 
-        string result = "";
-        string currentCarNumber = "";
-        for (int i = 0; i < carNumbers.Length; i++)
+        int rows = field.GetLength(0);
+        int columns = field.GetLength(1);
+
+        int rectangles = 0;
+        bool[,] visited = new bool[rows, columns];
+
+        for (int i = 0; i < rows; i++)
         {
-            currentCarNumber += carNumbers[i];
-            if ((Regex.IsMatch(currentCarNumber, patternOne) || Regex.IsMatch(currentCarNumber, patternTwo))&& currentCarNumber.Length >=4)
-            {
-                result += currentCarNumber + " ";
-                currentCarNumber = "";
+            for (int j = 0; j < columns; j++)
+            {   
+                if (field[i, j] == '*' && !visited[i, j])
+                {
+                    VisitRectangle(field, visited, i, j);
+                    rectangles++;
+                }
             }
         }
-        return result;
+
+        return rectangles;
+    }
+
+    static void VisitRectangle(char[,] field, bool[,] visited, int row, int column)
+    {
+        int rows = field.GetLength(0);
+        int columns = field.GetLength(1);
+
+        if (row < 0 || row >= rows || column < 0 || column >= columns || field[row, column] != '*' || visited[row, column])
+        {
+            return;
+        } 
+        visited[row, column] = true; 
+        VisitRectangle(field, visited, row - 1, column);
+        VisitRectangle(field, visited, row + 1, column);
+        VisitRectangle(field, visited, row, column - 1);
+        VisitRectangle(field, visited, row, column + 1);
+    }
+    static List<int> CountNestedRectangles(char[,] field, int totalRectangles)
+    {
+        int rows = field.GetLength(0);
+        int columns = field.GetLength(1);
+
+        List<int> nestedCounts = new List<int>();
+        bool[,] visited = new bool[rows, columns];
+        int count = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                if (field[i, j] == '*' && !visited[i, j])
+                {
+                    count = CountNestedRectanglesHelper(field, visited, i, j, totalRectangles);
+                    nestedCounts.Add(count);
+                }
+            }
+        }
+
+        return nestedCounts;
+    }
+
+    static int CountNestedRectanglesHelper(char[,] field, bool[,] visited, int row, int column, int totalRectangles)
+    {
+        int rows = field.GetLength(0);
+        int columns = field.GetLength(1);
+
+        if (row < 0 || row >= rows || column < 0 || column >= columns || field[row, column] != '*' || visited[row, column])
+        {
+            return 0;
+        }
+        visited[row, column] = true; 
+        int count = 0;
+        count += CountNestedRectanglesHelper(field, visited, row - 1, column, totalRectangles);
+        count += CountNestedRectanglesHelper(field, visited, row + 1, column, totalRectangles);
+        count += CountNestedRectanglesHelper(field, visited, row, column - 1, totalRectangles);
+        count += CountNestedRectanglesHelper(field, visited, row, column + 1, totalRectangles);
+
+        if (count == 0)
+        {
+            count = totalRectangles - 2;
+        }
+
+        return count;
     }
 }
