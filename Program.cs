@@ -1,70 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-class Comment
-{
-    public int Id { get; set; }
-    public int ParentId { get; set; }
-    public string Text { get; set; }
-}
 
 class Program
 {
-
-static void Main()
+    static void Main()
     {
-        int inputCount = int.Parse(Console.ReadLine());
-        List<List<Comment>> input = new List<List<Comment>>();
-        for (int i = 0; i < inputCount; i++)
-        {
-            List<Comment> comments = new List<Comment>();
-            int m = int.Parse(Console.ReadLine());
+        int n = Convert.ToInt32(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {   int m = Convert.ToInt32(Console.ReadLine());
+            string[] input = Console.ReadLine().Split();
+            int[] sequence = new int[m];
             for (int j = 0; j < m; j++)
             {
-                string[] inputLine = Console.ReadLine().Split(' ');
-                int id = int.Parse(inputLine[0]);
-                int parentId = int.Parse(inputLine[1]);
-                string text = string.Join(" ", inputLine, 2, inputLine.Length - 2);
-             comments.Add (new Comment
-                {
-                    Id = id,
-                    ParentId = parentId,
-                    Text = text
-                });
+                sequence[j] = int.Parse(input[j]);
             }
 
-            input.Add(comments);
-        }
-foreach (List<Comment> comments in input)
-        {
-        Dictionary<int, List<Comment>> childrenMap = new Dictionary<int, List<Comment>>();
-
-        foreach (var comment in comments)
-        {
-            if (!childrenMap.ContainsKey(comment.ParentId))
+            List<int> compressedSequence = CompressSequence(sequence);
+            
+            Console.WriteLine(compressedSequence.Count);
+            foreach (int num in compressedSequence)
             {
-                childrenMap[comment.ParentId] = new List<Comment>();
+                Console.Write(num + " ");
             }
-            childrenMap[comment.ParentId].Add(comment);
+            Console.WriteLine();
         }
-
-        PrintCommentTree(childrenMap, -1, "");
     }
-    }
-   static void PrintCommentTree(Dictionary<int, List<Comment>> childrenMap, int Id, string prefix)
+static List<int> CompressSequence(int[] sequence)
     {
-        if (childrenMap.ContainsKey(Id))
-        {
-            List<Comment> children = childrenMap[Id];
-            for (int i = 0; i < children.Count; i++)
-            {
-                Comment comment = children[i];
-                string line = (Id == - 1) ? "" : "|--" ;
-   
-                Console.WriteLine(prefix + line  + comment.Text);
-                PrintCommentTree(childrenMap, comment.Id, prefix + (i == children.Count - 1 ? "    " : "|   "));
+        List<int> compressedSequence = new List<int>();
+        int start = 0;
+        while (start < sequence.Length )
+        {   int end = start + 1;     
+            int diff = 0;
+            while (end < sequence.Length && sequence[end] == sequence[end - 1] + 1){
+                diff = sequence[end] - sequence[start];
+                end++;
+            }  
+            while (end < sequence.Length && sequence[end] == sequence[end - 1] - 1){
+                diff = sequence[end] - sequence[start];
+                end++;
+            } 
 
-            }
-        }
+            compressedSequence.Add(sequence[start]);
+            compressedSequence.Add(diff);
+            start = end;    
     }
-}
+     return compressedSequence;
+}}
