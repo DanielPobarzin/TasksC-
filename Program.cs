@@ -1,70 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-class Comment
-{
-    public int Id { get; set; }
-    public int ParentId { get; set; }
-    public string Text { get; set; }
-}
-
 class Program
 {
-
 static void Main()
     {
-        int inputCount = int.Parse(Console.ReadLine());
-        List<List<Comment>> input = new List<List<Comment>>();
-        for (int i = 0; i < inputCount; i++)
+      int n = Convert.ToInt32(Console.ReadLine());
+        for (int i = 0; i < n; i++)
         {
-            List<Comment> comments = new List<Comment>();
-            int m = int.Parse(Console.ReadLine());
-            for (int j = 0; j < m; j++)
-            {
-                string[] inputLine = Console.ReadLine().Split(' ');
-                int id = int.Parse(inputLine[0]);
-                int parentId = int.Parse(inputLine[1]);
-                string text = string.Join(" ", inputLine, 2, inputLine.Length - 2);
-             comments.Add (new Comment
-                {
-                    Id = id,
-                    ParentId = parentId,
-                    Text = text
-                });
-            }
-
-            input.Add(comments);
+        int LowLimit = 15; 
+        int UppLimit = 30; 
+        int person = Convert.ToInt32(Console.ReadLine());
+        for (int j = 0; j < person; j++){
+            string[] input = Console.ReadLine().Split(' ');
+            string sign = input[0];
+            int value = Convert.ToInt32(input[1]);
+            Console.WriteLine(CheckTemperature(sign, value, ref LowLimit, ref UppLimit));
         }
-foreach (List<Comment> comments in input)
-        {
-        Dictionary<int, List<Comment>> childrenMap = new Dictionary<int, List<Comment>>();
-
-        foreach (var comment in comments)
-        {
-            if (!childrenMap.ContainsKey(comment.ParentId))
-            {
-                childrenMap[comment.ParentId] = new List<Comment>();
-            }
-            childrenMap[comment.ParentId].Add(comment);
-        }
-
-        PrintCommentTree(childrenMap, -1, "");
+        Console.Write("\n");
+        }   
     }
-    }
-   static void PrintCommentTree(Dictionary<int, List<Comment>> childrenMap, int Id, string prefix)
+    static int CheckTemperature(string sign, int value, ref int LowLimit, ref int UppLimit)
     {
-        if (childrenMap.ContainsKey(Id))
+    int codeError = -1;
+    switch (sign)
         {
-            List<Comment> children = childrenMap[Id];
-            for (int i = 0; i < children.Count; i++)
-            {
-                Comment comment = children[i];
-                string line = (Id == - 1) ? "" : "|--" ;
-   
-                Console.WriteLine(prefix + line  + comment.Text);
-                PrintCommentTree(childrenMap, comment.Id, prefix + (i == children.Count - 1 ? "    " : "|   "));
-
-            }
+        case ">=": LowLimit = (value <= LowLimit)? LowLimit : value;
+            if (LowLimit <= UppLimit){
+                    return LowLimit;
+                } else{
+                        return codeError;  
+                }
+        case "<=": UppLimit = (value >= UppLimit)? UppLimit : value;
+            if (LowLimit <= UppLimit){
+                    return LowLimit;
+                } else{
+                        return codeError;  
+                }
+        default:
+                return codeError;
         }
     }
 }
+
+
+
+   
