@@ -1,125 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+class Comment
+{
+    public int Id { get; set; }
+    public int ParentId { get; set; }
+    public string Text { get; set; }
+}
 
 class Program
 {
-    static void Main(string[] args)
+
+static void Main()
     {
-        int tests = int.Parse(Console.ReadLine());
-
-        for (int t = 0; t < tests; t++)
+        int inputCount = int.Parse(Console.ReadLine());
+        List<List<Comment>> input = new List<List<Comment>>();
+        for (int i = 0; i < inputCount; i++)
         {
-            string[] size = Console.ReadLine().Split();
-            int rows = int.Parse(size[0]);
-            int columns = int.Parse(size[1]);
-
-            char[,] field = new char[rows, columns];
-
-            for (int i = 0; i < rows; i++)
+            List<Comment> comments = new List<Comment>();
+            int m = int.Parse(Console.ReadLine());
+            for (int j = 0; j < m; j++)
             {
-                string line = Console.ReadLine();
-                for (int j = 0; j < columns; j++)
+                string[] inputLine = Console.ReadLine().Split(' ');
+                int id = int.Parse(inputLine[0]);
+                int parentId = int.Parse(inputLine[1]);
+                string text = string.Join(" ", inputLine, 2, inputLine.Length - 2);
+             comments.Add (new Comment
                 {
-                    field[i, j] = line[j];
-                }
+                    Id = id,
+                    ParentId = parentId,
+                    Text = text
+                });
             }
 
-            int rectangles = CountRectangles(field);
-                        Console.WriteLine(rectangles);
-            List<int> nestedCounts = CountNestedRectangles(field, rectangles);
+            input.Add(comments);
+        }
+foreach (List<Comment> comments in input)
+        {
+        Dictionary<int, List<Comment>> childrenMap = new Dictionary<int, List<Comment>>();
 
-            nestedCounts.Sort();
-
-            foreach (int count in nestedCounts)
+        foreach (var comment in comments)
+        {
+            if (!childrenMap.ContainsKey(comment.ParentId))
             {
-                Console.Write(count + " ");
+                childrenMap[comment.ParentId] = new List<Comment>();
             }
-            Console.WriteLine();
-        }
-    }
-
-    static int CountRectangles(char[,] field)
-    {
-        int rows = field.GetLength(0);
-        int columns = field.GetLength(1);
-
-        int rectangles = 0;
-        bool[,] visited = new bool[rows, columns];
-
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < columns; j++)
-            {   
-                if (field[i, j] == '*' && !visited[i, j])
-                {
-                    VisitRectangle(field, visited, i, j);
-                    rectangles++;
-                }
-            }
+            childrenMap[comment.ParentId].Add(comment);
         }
 
-        return rectangles;
+        PrintCommentTree(childrenMap, -1, "");
     }
-
-    static void VisitRectangle(char[,] field, bool[,] visited, int row, int column)
-    {
-        int rows = field.GetLength(0);
-        int columns = field.GetLength(1);
-
-        if (row < 0 || row >= rows || column < 0 || column >= columns || field[row, column] != '*' || visited[row, column])
-        {
-            return;
-        } 
-        visited[row, column] = true; 
-        VisitRectangle(field, visited, row - 1, column);
-        VisitRectangle(field, visited, row + 1, column);
-        VisitRectangle(field, visited, row, column - 1);
-        VisitRectangle(field, visited, row, column + 1);
     }
-    static List<int> CountNestedRectangles(char[,] field, int totalRectangles)
+   static void PrintCommentTree(Dictionary<int, List<Comment>> childrenMap, int Id, string prefix)
     {
-        int rows = field.GetLength(0);
-        int columns = field.GetLength(1);
-
-        List<int> nestedCounts = new List<int>();
-        bool[,] visited = new bool[rows, columns];
-        int count = 0;
-        for (int i = 0; i < rows; i++)
+        if (childrenMap.ContainsKey(Id))
         {
-            for (int j = 0; j < columns; j++)
+            List<Comment> children = childrenMap[Id];
+            for (int i = 0; i < children.Count; i++)
             {
-                if (field[i, j] == '*' && !visited[i, j])
-                {
-                    count = CountNestedRectanglesHelper(field, visited, i, j, totalRectangles);
-                    nestedCounts.Add(count);
-                }
+                Comment comment = children[i];
+                string line = (Id == - 1) ? "" : "|--" ;
+   
+                Console.WriteLine(prefix + line  + comment.Text);
+                PrintCommentTree(childrenMap, comment.Id, prefix + (i == children.Count - 1 ? "    " : "|   "));
+
             }
         }
-
-        return nestedCounts;
-    }
-
-    static int CountNestedRectanglesHelper(char[,] field, bool[,] visited, int row, int column, int totalRectangles)
-    {
-        int rows = field.GetLength(0);
-        int columns = field.GetLength(1);
-
-        if (row < 0 || row >= rows || column < 0 || column >= columns || field[row, column] != '*' || visited[row, column])
-        {
-            return 0;
-        }
-        visited[row, column] = true; 
-        int count = 0;
-        count += CountNestedRectanglesHelper(field, visited, row - 1, column, totalRectangles);
-        count += CountNestedRectanglesHelper(field, visited, row + 1, column, totalRectangles);
-        count += CountNestedRectanglesHelper(field, visited, row, column - 1, totalRectangles);
-        count += CountNestedRectanglesHelper(field, visited, row, column + 1, totalRectangles);
-
-        if (count == 0)
-        {
-            count = totalRectangles - 2;
-        }
-
-        return count;
     }
 }
