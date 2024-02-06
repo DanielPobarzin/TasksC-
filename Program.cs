@@ -1,77 +1,132 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Text;
+
+class SimpleTerminal
+{
+    private List<string> lines;
+    private int cursorRow;
+    private int cursorCol;
+
+    public SimpleTerminal()
+    {
+        lines = [""];
+        cursorRow = 0;
+        cursorCol = 0;
+    }
+
+    public void ProcessInput(string input)
+    {
+        foreach (char c in input)
+        {
+            switch (c)
+            {
+                case 'L':
+                    MoveCursorLeft();
+                    break;
+                case 'R':
+                    MoveCursorRight();
+                    break;
+                case 'U':
+                    MoveCursorUp();
+                    break;
+                case 'D':
+                    MoveCursorDown();
+                    break;
+                case 'B':
+                    MoveCursorToBeginning();
+                    break;
+                case 'E':
+                    MoveCursorToEnd();
+                    break;
+                case 'N':
+                    InsertNewline();
+                    break;
+                default:
+                    InsertCharacter(c);
+                    break;
+            }
+        }
+    }
+
+    private void MoveCursorLeft()
+    {
+        if (cursorCol > 0)
+        {
+            cursorCol--;
+        }
+    }
+
+    private void MoveCursorRight()
+    {
+        if (cursorCol < lines[cursorRow].Length)
+        {
+            cursorCol++;
+        }
+    }
+
+    private void MoveCursorUp()
+    {
+        if (cursorRow > 0)
+        {
+            cursorRow--;
+        }
+    }
+
+    private void MoveCursorDown()
+    {
+        if (cursorRow < lines.Count - 1)
+        {
+            cursorRow++;
+        }
+    }
+
+    private void MoveCursorToBeginning()
+    {
+        cursorCol = 0;
+    }
+
+    private void MoveCursorToEnd()
+    {
+        cursorCol = lines[cursorRow].Length;
+    }
+
+    private void InsertNewline()
+    {
+        string remainder = lines[cursorRow].Substring(cursorCol,lines[cursorRow].Length);
+        lines[cursorRow] = lines[cursorRow].Substring(0, cursorCol);
+        lines.Insert(cursorRow + 1, remainder);
+        cursorRow++;
+        cursorCol = 0;
+    }
+
+    private void InsertCharacter(char c)
+    {
+        lines[cursorRow] = lines[cursorRow].Insert(cursorCol, c.ToString());
+        cursorCol++;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (string line in lines)
+        {
+            sb.AppendLine(line);
+        }
+        return sb.ToString();
+    }
+}
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        int n = int.Parse(Console.ReadLine());
-        
-        for (int i = 0; i < n; i++)
-        {
-            int len = int.Parse(Console.ReadLine());
-            string[] input = Console.ReadLine().Split(' ');
-            int[] numbers = new int[len];
-            
-            for (int j = 0; j < len; j++)
-            {
-                numbers[j] = int.Parse(input[j]);
-            }
-            
-            List<int> compressedSequence = CompressSequence(numbers);
-            
-            Console.WriteLine(compressedSequence.Count);
-            Console.WriteLine(string.Join(" ", compressedSequence));
+         int n = Convert.ToInt32(Console.ReadLine());
+        for (int i = 0; i < n; i++){
+        SimpleTerminal terminal = new SimpleTerminal();
+        string input = Console.ReadLine();
+        terminal.ProcessInput(input);
+        Console.WriteLine(terminal + "-");
         }
-    }
-    
-    static List<int> CompressSequence(int[] numbers)
-    {
-        List<int> compressedSequence = new List<int>();
-        
-        int start = 0;
-        while (start < numbers.Length)
-        {
-            int diff = 0;
-            int end = start + 1;
-            while (end < numbers.Length && Math.Abs(numbers[end] - numbers[end - 1]) == 1)
-            {
-                
-                if (numbers[end] - numbers[end - 1] == 1 && diff>=0){
-                    diff++; 
-                    if (numbers[end] - numbers[end - 1] == -1){
-                        break;
-                    }
-                } else if (numbers[end] - numbers[end - 1] == -1&& diff<=0){
-                    diff--; 
-                    if (numbers[end] - numbers[end - 1] == 1){
-                        break;
-                    }
-                }else {
-                    break;
-                }
-                end++; 
-            } 
-            if (end - start == 1)
-            {
-                compressedSequence.Add(numbers[start]);
-                compressedSequence.Add(0);
-            }
-            else if (end - start > 1)
-            {
-                compressedSequence.Add(numbers[start]);
-                compressedSequence.Add(diff);
-            }
-            else
-            {
-                compressedSequence.Add(numbers[start]);
-                compressedSequence.Add(numbers[end - 1] - numbers[start]);
-            }
-            
-            start = end;
-        }
-        
-        return compressedSequence;
     }
 }
