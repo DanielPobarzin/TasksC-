@@ -1,49 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 class Program
 {
     static void Main()
     {
-        int n = Convert.ToInt32(Console.ReadLine());
+        int n = int.Parse(Console.ReadLine());
+        
         for (int i = 0; i < n; i++)
-        {   int m = Convert.ToInt32(Console.ReadLine());
-            string[] input = Console.ReadLine().Split();
-            int[] sequence = new int[m];
-            for (int j = 0; j < m; j++)
+        {
+            int len = int.Parse(Console.ReadLine());
+            string[] input = Console.ReadLine().Split(' ');
+            int[] numbers = new int[len];
+            
+            for (int j = 0; j < len; j++)
             {
-                sequence[j] = int.Parse(input[j]);
+                numbers[j] = int.Parse(input[j]);
             }
-
-            List<int> compressedSequence = CompressSequence(sequence);
+            
+            List<int> compressedSequence = CompressSequence(numbers);
             
             Console.WriteLine(compressedSequence.Count);
-            foreach (int num in compressedSequence)
-            {
-                Console.Write(num + " ");
-            }
-            Console.WriteLine();
+            Console.WriteLine(string.Join(" ", compressedSequence));
         }
     }
-static List<int> CompressSequence(int[] sequence)
+    
+    static List<int> CompressSequence(int[] numbers)
     {
         List<int> compressedSequence = new List<int>();
+        
         int start = 0;
-        while (start < sequence.Length )
-        {   int end = start + 1;     
+        while (start < numbers.Length)
+        {
             int diff = 0;
-            while (end < sequence.Length && sequence[end] == sequence[end - 1] + 1){
-                diff = sequence[end] - sequence[start];
-                end++;
-            }  
-            while (end < sequence.Length && sequence[end] == sequence[end - 1] - 1){
-                diff = sequence[end] - sequence[start];
-                end++;
+            int end = start + 1;
+            while (end < numbers.Length && Math.Abs(numbers[end] - numbers[end - 1]) == 1)
+            {
+                
+                if (numbers[end] - numbers[end - 1] == 1 && diff>=0){
+                    diff++; 
+                    if (numbers[end] - numbers[end - 1] == -1){
+                        break;
+                    }
+                } else if (numbers[end] - numbers[end - 1] == -1&& diff<=0){
+                    diff--; 
+                    if (numbers[end] - numbers[end - 1] == 1){
+                        break;
+                    }
+                }else {
+                    break;
+                }
+                end++; 
             } 
-
-            compressedSequence.Add(sequence[start]);
-            compressedSequence.Add(diff);
-            start = end;    
+            if (end - start == 1)
+            {
+                compressedSequence.Add(numbers[start]);
+                compressedSequence.Add(0);
+            }
+            else if (end - start > 1)
+            {
+                compressedSequence.Add(numbers[start]);
+                compressedSequence.Add(diff);
+            }
+            else
+            {
+                compressedSequence.Add(numbers[start]);
+                compressedSequence.Add(numbers[end - 1] - numbers[start]);
+            }
+            
+            start = end;
+        }
+        
+        return compressedSequence;
     }
-     return compressedSequence;
-}}
+}
