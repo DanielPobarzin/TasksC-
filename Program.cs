@@ -1,141 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-
-class SimpleTerminal
-{
-    private List<string> lines;
-    private int cursorRow;
-    private int cursorCol;
-
-    public SimpleTerminal()
-    {
-        lines = new List<string> { "" };
-        cursorRow = 0;
-        cursorCol = 0;
-    }
-
-    public void ProcessInput(string input)
-    {
-        foreach (char c in input)
-        {
-            switch (c)
-            {
-                case 'L':
-                    MoveCursorLeft();
-                    break;
-                case 'R':
-                    MoveCursorRight();
-                    break;
-                case 'U':
-                    MoveCursorUp();
-                    break;
-                case 'D':
-                    MoveCursorDown();
-                    break;
-                case 'B':
-                    MoveCursorToBeginning();
-                    break;
-                case 'E':
-                    MoveCursorToEnd();
-                    break;
-                case 'N':
-                    InsertNewline();
-                    break;
-                default:
-                    InsertCharacter(c);
-                    break;
-            }
-        }
-    }
-
-    private void MoveCursorLeft()
-    {
-        if (cursorCol > 0)
-        {
-            cursorCol--;
-        }
-    }
-
-    private void MoveCursorRight()
-    {
-        if (cursorCol < lines[cursorRow].Length)
-        {
-            cursorCol++;
-        }
-    }
-
-    private void MoveCursorUp()
-    {
-        if (cursorRow > 0)
-        {
-            cursorRow--;
-            if (cursorCol > lines[cursorRow].Length)
-            {
-                cursorCol = lines[cursorRow].Length;
-            }
-        }
-    }
-
-    private void MoveCursorDown()
-    {
-        if (cursorRow < lines.Count - 1)
-        {
-            cursorRow++;
-            if (cursorCol > lines[cursorRow].Length)
-            {
-                cursorCol = lines[cursorRow].Length;
-            }
-        }
-    }
-
-    private void MoveCursorToBeginning()
-    {
-        cursorCol = 0;
-    }
-
-    private void MoveCursorToEnd()
-    {
-        cursorCol = lines[cursorRow].Length;
-    }
-
-    private void InsertNewline()
-    {
-        string remainder = lines[cursorRow].Substring(cursorCol);
-        lines[cursorRow] = lines[cursorRow].Substring(0, cursorCol);
-        lines.Insert(cursorRow + 1, remainder);
-        cursorRow++;
-        cursorCol = 0;
-    }
-
-    private void InsertCharacter(char c)
-    {
-        lines[cursorRow] = lines[cursorRow].Insert(cursorCol, c.ToString());
-        cursorCol++;
-    }
-
-    public override string ToString()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (string line in lines)
-        {
-            sb.AppendLine(line);
-        }
-        return sb.ToString();
-    }
-}
+using System.Linq;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        int n = Convert.ToInt32(Console.ReadLine());
-        for (int i = 0; i < n; i++)
+        int n = int.Parse(Console.ReadLine()); // количество входных данных
+        for (int k = 0; k<n; k++){
+        int totalPageCount = int.Parse(Console.ReadLine()); // общее количество страниц в документе
+
+        List<int> printedPages = new List<int>();
+        string[] input = Console.ReadLine().Split(',');
+        foreach (string item in input)
         {
-            SimpleTerminal terminal = new SimpleTerminal();
-            string input = Console.ReadLine();
-            terminal.ProcessInput(input);
-            Console.WriteLine(terminal + "-");
+            if (item.Contains("-"))
+            {
+                string[] range = item.Split('-');
+                int start = int.Parse(range[0]);
+                int end = int.Parse(range[1]);
+                for (int i = start; i <= end; i++)
+                {
+                    printedPages.Add(i);
+                }
+            }
+            else
+            {
+                printedPages.Add(int.Parse(item));
+            }
         }
+
+        List<int> remainingPages = Enumerable.Range(1, totalPageCount).Except(printedPages).ToList();
+
+        List<string> result = new List<string>();
+        int startRange = remainingPages[0];
+        int endRange = remainingPages[0];
+        for (int i = 1; i < remainingPages.Count; i++)
+        {
+            if (remainingPages[i] == endRange + 1)
+            {
+                endRange = remainingPages[i];
+            }
+            else
+            {
+                if (startRange == endRange)
+                {
+                    result.Add(startRange.ToString());
+                }
+                else
+                {
+                    result.Add($"{startRange}-{endRange}");
+                }
+                startRange = remainingPages[i];
+                endRange = remainingPages[i];
+            }
+        }
+
+        if (startRange == endRange)
+        {
+            result.Add(startRange.ToString());
+        }
+        else
+        {
+            result.Add($"{startRange}-{endRange}");
+        }
+
+        Console.WriteLine(string.Join(",", result));
+    }
     }
 }
