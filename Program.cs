@@ -10,7 +10,7 @@ class SimpleTerminal
 
     public SimpleTerminal()
     {
-        lines = [""];
+        lines = new List<string> { "" };
         cursorRow = 0;
         cursorCol = 0;
     }
@@ -70,6 +70,10 @@ class SimpleTerminal
         if (cursorRow > 0)
         {
             cursorRow--;
+            if (cursorCol > lines[cursorRow].Length)
+            {
+                cursorCol = lines[cursorRow].Length;
+            }
         }
     }
 
@@ -78,6 +82,10 @@ class SimpleTerminal
         if (cursorRow < lines.Count - 1)
         {
             cursorRow++;
+            if (cursorCol > lines[cursorRow].Length)
+            {
+                cursorCol = lines[cursorRow].Length;
+            }
         }
     }
 
@@ -93,7 +101,7 @@ class SimpleTerminal
 
     private void InsertNewline()
     {
-        string remainder = lines[cursorRow].Substring(cursorCol,lines[cursorRow].Length);
+        string remainder = lines[cursorRow].Substring(cursorCol);
         lines[cursorRow] = lines[cursorRow].Substring(0, cursorCol);
         lines.Insert(cursorRow + 1, remainder);
         cursorRow++;
@@ -121,12 +129,13 @@ class Program
 {
     static void Main(string[] args)
     {
-         int n = Convert.ToInt32(Console.ReadLine());
-        for (int i = 0; i < n; i++){
-        SimpleTerminal terminal = new SimpleTerminal();
-        string input = Console.ReadLine();
-        terminal.ProcessInput(input);
-        Console.WriteLine(terminal + "-");
+        int n = Convert.ToInt32(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {
+            SimpleTerminal terminal = new SimpleTerminal();
+            string input = Console.ReadLine();
+            terminal.ProcessInput(input);
+            Console.WriteLine(terminal + "-");
         }
     }
 }
