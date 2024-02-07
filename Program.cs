@@ -6,66 +6,65 @@ class Program
 {
     static void Main()
     {
-        int n = int.Parse(Console.ReadLine()); // количество входных данных
-        for (int k = 0; k<n; k++){
-        int totalPageCount = int.Parse(Console.ReadLine()); // общее количество страниц в документе
+        int setsCount = int.Parse(Console.ReadLine());
+        List<string> results = new List<string>();
 
-        List<int> printedPages = new List<int>();
-        string[] input = Console.ReadLine().Split(',');
-        foreach (string item in input)
+        for (int i = 0; i < setsCount; i++)
         {
-            if (item.Contains("-"))
+            int playersCount = int.Parse(Console.ReadLine());
+            List<string> playerCards = new List<string>();
+
+            for (int j = 0; j < playersCount; j++)
             {
-                string[] range = item.Split('-');
-                int start = int.Parse(range[0]);
-                int end = int.Parse(range[1]);
-                for (int i = start; i <= end; i++)
-                {
-                    printedPages.Add(i);
-                }
+                playerCards.AddRange(Console.ReadLine().Split());
             }
-            else
-            {
-                printedPages.Add(int.Parse(item));
-            }
+
+            string[] myCards = playerCards.Take(2).ToArray();
+
+            List<string> possibleTableCards = GetPossibleTableCards(myCards, playerCards);
+
+            results.Add(possibleTableCards.Count.ToString());
+            results.AddRange(possibleTableCards);
         }
 
-        List<int> remainingPages = Enumerable.Range(1, totalPageCount).Except(printedPages).ToList();
-
-        List<string> result = new List<string>();
-        int startRange = remainingPages[0];
-        int endRange = remainingPages[0];
-        for (int i = 1; i < remainingPages.Count; i++)
+        foreach (string result in results)
         {
-            if (remainingPages[i] == endRange + 1)
-            {
-                endRange = remainingPages[i];
-            }
-            else
-            {
-                if (startRange == endRange)
-                {
-                    result.Add(startRange.ToString());
-                }
-                else
-                {
-                    result.Add($"{startRange}-{endRange}");
-                }
-                startRange = remainingPages[i];
-                endRange = remainingPages[i];
-            }
+            Console.WriteLine(result);
         }
+    }
 
-        if (startRange == endRange)
+    static List<string> GetPossibleTableCards(string[] myCards, List<string> allCards)
+    {
+        List<string> possibleTableCards = new List<string>();
+
+        string[] suits = { "S", "C", "D", "H" };
+
+        // Check for Set or Pair
+        if (myCards[0][0] == myCards[1][0] || allCards.GroupBy(x => x).Any(g => g.Count() >= 3) || allCards.GroupBy(x => x[0]).Any(g => g.Count() >= 2 && g.Key != myCards[0][0]))
         {
-            result.Add(startRange.ToString());
+            possibleTableCards.Add(myCards[0]);
+            possibleTableCards.Add(myCards[1]);
         }
         else
         {
-            result.Add($"{startRange}-{endRange}");
+            char[] values = { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
+            foreach (char value in values)
+            {
+                foreach (string suit in suits)
+                {
+                    if (myCards.Concat(allCards).Any(card => card[0] == value && card[1] == suit[0]))
+                    {
+                        possibleTableCards.Add(value.ToString() + suit);
+                        break;
+                    }
+                }
+                if (possibleTableCards.Count > 0)
+                {
+                    break;
+                }
+            }
         }
 
-        Console.WriteLine(string.Join(",", result));
-    }
+        return possibleTableCards;
     }
 }
