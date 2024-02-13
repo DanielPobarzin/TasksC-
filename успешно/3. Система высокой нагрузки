@@ -1,0 +1,50 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        using var input = new StreamReader(Console.OpenStandardInput());
+        using var output = new StreamWriter(Console.OpenStandardOutput());
+
+        int t = Convert.ToInt32(input.ReadLine());
+        while (t-- > 0)
+        {
+            string s = input.ReadLine();
+            int state = 0;
+            bool wrong = false;
+            foreach (char ch in s)
+            {
+                switch (state)
+                {
+                    case 0:
+                        if (ch != 'M') wrong = true;
+                        else state = 1;
+                        break;
+                    case 1:
+                        if (ch == 'M') wrong = true;
+                        else if (ch == 'C') state = 2;
+                        else if (ch == 'R') state = 3;
+                        else if (ch == 'D') state = 4;
+                        break;
+                    case 2:
+                        if (ch != 'M') wrong = true;
+                        else state = 1;
+                        break;
+                    case 3:
+                        if (ch != 'C') wrong = true;
+                        else state = 2;
+                        break;
+                    case 4:
+                        if (ch != 'M') wrong = true;
+                        else state = 1;
+                        break;
+                }
+                if (wrong) break;
+            }
+            if (wrong || state != 4) output.WriteLine("NO");
+            else output.WriteLine("YES");
+        }
+    }
+}

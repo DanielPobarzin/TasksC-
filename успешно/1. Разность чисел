@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string input = Console.ReadLine();
+        string[] numbers = input.Split(' ');
+
+        if (numbers.Length != 2)
+        {
+            return;
+        }
+
+        if (!int.TryParse(numbers[0], out int num1) || !int.TryParse(numbers[1], out int num2))
+        {
+            return;
+        }
+        int difference = num1 - num2;
+        Console.WriteLine(difference);
+    }
+}

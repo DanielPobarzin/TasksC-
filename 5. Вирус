@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+
+class Program
+{
+    public class Directory
+    {
+        public string dir { get; set; }
+        public List<string> files { get; set; }
+        public List<Directory> folders { get; set; }
+    }
+
+    static void Main()
+    {
+        int t = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < t; i++)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+
+
+
+            string json = "";
+            var options = new JsonSerializerOptions
+            {
+             MaxDepth = 600 // или любое другое значение, которое достаточно для вашего JSON
+            };
+
+            for (int j = 0; j < n; j++)
+            {
+                json += Console.ReadLine();
+            }
+
+            var root = JsonSerializer.Deserialize<Directory>(json, options);
+
+            int infectedFilesCount = CountInfectedFiles(root, false);
+
+            Console.WriteLine(infectedFilesCount);
+        }
+    }
+
+static int CountInfectedFiles(Directory dir, bool isInfected)
+{
+    int infectedFilesCount = 0;
+
+    // Проверяем, есть ли в текущей папке файл с расширением ".hack"
+    if (dir.files?.Exists(file => file.EndsWith(".hack")) == true)
+    {
+        isInfected = true;
+    }
+
+    // Если текущая папка заражена, увеличиваем счетчик на количество файлов в ней
+    if (isInfected && dir.files != null)
+    {
+        infectedFilesCount += dir.files.Count;
+    }
+
+    // Обрабатываем подпапки
+    foreach (var subdir in dir.folders ?? new List<Directory>())
+    {
+        if (subdir != null)
+        {
+            infectedFilesCount += CountInfectedFiles(subdir, isInfected);
+        }
+    }
+
+    return infectedFilesCount;
+}
+}

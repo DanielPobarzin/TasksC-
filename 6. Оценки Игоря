@@ -1,0 +1,44 @@
+using System;
+using System.IO;
+
+class MainClass {
+    public static void Main (string[] args) {
+        using var input = new StreamReader(Console.OpenStandardInput());
+        using var output = new StreamWriter(Console.OpenStandardOutput());
+
+        int t = int.Parse(input.ReadLine()); // Число наборов входных данных
+
+        for (int i = 0; i < t; i++) {
+            string[] sizes = input.ReadLine().Split(); // Размеры таблицы
+            int n = int.Parse(sizes[0]); // Количество строк
+            int m = int.Parse(sizes[1]); // Количество столбцов
+
+            int[,] grades = new int[n, m]; // Создаем массив для хранения оценок
+
+            // Считываем оценки из входных данных
+            for (int j = 0; j < n; j++) {
+                string line = input.ReadLine();
+                for (int k = 0; k < m; k++) {
+                    grades[j, k] = int.Parse(line[k].ToString());
+                }
+            }
+
+            // Находим наихудшую оценку
+            int minGrade = 5;
+            int rowToRemove = 0;
+            int colToRemove = 0;
+
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < m; k++) {
+                    if (grades[j, k] < minGrade) {
+                        minGrade = grades[j, k];
+                        rowToRemove = j + 1;
+                        colToRemove = k + 1;
+                    }
+                }
+            }
+
+            output.WriteLine($"{rowToRemove} {colToRemove}");
+        }
+    }
+}

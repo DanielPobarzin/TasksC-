@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+
+public class Robot
+{
+    public int Row { get; set; }
+    public int Column { get; set; }
+    public char Symbol { get; set; }
+    public string Direction { get; set; }
+}
+
+public class WarehouseNavigation
+{  
+    public static void Main(string[] args)
+    {
+        int groupCount = Convert.ToInt32(Console.ReadLine());
+        List<List<string>> answers = new List<List<string>>();
+
+        for(int group = 0; group < groupCount; group++)
+        {
+            string[] dimensions = Console.ReadLine().Split();
+            int rows = Convert.ToInt32(dimensions[0]);
+            int columns = Convert.ToInt32(dimensions[1]);
+            List<string> rowsInput = new List<string>();
+
+            Robot robotA = new Robot() { Symbol = 'a' };
+            Robot robotB = new Robot() { Symbol = 'b' };
+
+            for(int i = 0; i < rows; i++)
+            {
+                string rowInput = Console.ReadLine();
+                rowsInput.Add(rowInput);
+                for(int j = 0; j < columns; j++)
+                {
+                    char currentCell = rowInput[j];
+                    if(currentCell == 'A')
+                    {
+                        robotA.Row = i;
+                        robotA.Column = j;
+                    }
+                    else if(currentCell == 'B')
+                    {
+                        robotB.Row = i;
+                        robotB.Column = j;
+                    }
+                }
+            }
+
+            AssignDirections(robotA, robotB);
+
+            rowsInput = FillRoad(rowsInput, robotA);
+            rowsInput = FillRoad(rowsInput, robotB);
+            rowsInput = FillAB(rowsInput, robotA, robotB);
+
+            answers.Add(rowsInput);
+        }
+
+        foreach(var answer in answers)
+        {
+            foreach(var line in answer)
+            {
+                Console.WriteLine(line);
+            }
+        }
+    }
+
+    public static void AssignDirections(Robot robotA, Robot robotB)
+    {
+        if(robotA.Row == robotB.Row)
+        {
+            robotA.Direction = robotA.Column < robotB.Column ? "L" : "R";
+            robotB.Direction = robotA.Direction == "L" ? "R" : "L";
+        }
+        else
+        {
+            robotA.Direction = robotA.Row < robotB.Row ? "L" : "R";
+            robotB.Direction = robotA.Direction == "L" ? "R" : "L";
+        }
+    }
+
+    public static List<string> FillRoad(List<string> rowsInput, Robot robot)
+    {
+        int rowLength = rowsInput.Count - 1;
+        int columnLength = rowsInput[0].Length - 1;
+
+        if(robot.Direction == "L")
+        {
+            if(robot.Column % 2 == 0)
+            {
+                rowsInput = FillColumn(rowsInput, robot.Column, 0, robot.Row, robot.Symbol);
+                rowsInput = FillRow(rowsInput, 0, 0, robot.Column, robot.Symbol);
+            }
+            else
+            {
+                rowsInput = FillRow(rowsInput, robot.Row, 0, robot.Column, robot.Symbol);
+                rowsInput = FillColumn(rowsInput, 0, 0, robot.Row, robot.Symbol);
+            }
+        }
+        else if(robot.Direction == "R")
+        {
+            if(robot.Column % 2 == 0)
+            {
+                rowsInput = FillColumn(rowsInput, robot.Column, robot.Row, rowLength, robot.Symbol);
+                rowsInput = FillRow(rowsInput, rowLength, robot.Column, columnLength, robot.Symbol);
+            }
+            else
+            {
+                rowsInput = FillRow(rowsInput, robot.Row, robot.Column, columnLength, robot.Symbol);
+                rowsInput = FillColumn(rowsInput, columnLength, robot.Row, rowLength, robot.Symbol);
+            }
+        }
+
+        return rowsInput;
+    }
+
+    public static List<string> FillColumn(List<string> rowsInput, int column, int start, int end, char symbol)
+    {
+        for(int i = start; i <= end; i++)
+        {
+            char[] rowArray = rowsInput[i].ToCharArray();
+            rowArray[column] = symbol;
+            rowsInput[i] = new string(rowArray);
+        }
+            
+        return rowsInput;
+    }
+   
+    public static List<string> FillRow(List<string> rowsInput, int row, int start, int end, char symbol)
+    {
+        char[] rowArray = rowsInput[row].ToCharArray();
+        for(int i = start; i <= end; i++)
+        {
+            rowArray[i] = symbol;   
+        }
+        rowsInput[row] = new string(rowArray);
+
+        return rowsInput;
+    }
+
+    public static List<string> FillAB(List<string> rowsInput, Robot robotA, Robot robotB)
+    {
+        // Robot A
+        char[] rowArrayA = rowsInput[robotA.Row].ToCharArray();
+        rowArrayA[robotA.Column] = 'A';
+        rowsInput[robotA.Row] = new string(rowArrayA);
+
+        // Robot B
+        char[] rowArrayB = rowsInput[robotB.Row].ToCharArray();
+        rowArrayB[robotB.Column] = 'B';
+        rowsInput[robotB.Row] = new string(rowArrayB);
+
+        return rowsInput;
+    }
+}

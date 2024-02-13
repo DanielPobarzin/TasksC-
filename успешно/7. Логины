@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        HashSet<string> existingLogins = new HashSet<string>();
+
+        for (int i = 0; i < n; i++)
+        {
+            string login = Console.ReadLine();
+            existingLogins.Add(login);
+
+            for (int j = 0; j < login.Length - 1; j++)
+            {
+                char[] chars = login.ToCharArray();
+                char temp = chars[j];
+                chars[j] = chars[j + 1];
+                chars[j + 1] = temp;
+
+                existingLogins.Add(new string(chars));
+            }
+        }
+
+        int m = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < m; i++)
+        {
+            string newLogin = Console.ReadLine();
+
+            if (existingLogins.Contains(newLogin))
+            {
+                Console.WriteLine(1);
+            }
+            else
+            {
+                Console.WriteLine(0);
+            }
+        }
+    }
+}
