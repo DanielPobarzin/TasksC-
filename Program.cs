@@ -1,70 +1,128 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
+﻿using System.Data.OleDb;
+using System.Web.Http;
+public class DataController : ApiController
 {
-    static void Main()
+     private static void Main()
     {
-        int setsCount = int.Parse(Console.ReadLine());
-        List<string> results = new List<string>();
-
-        for (int i = 0; i < setsCount; i++)
+        var builder = WebApplication.CreateBuilder();
+        var app = builder.Build();
+    }
+    public static string connectString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=DataBaseAlgoritm.mdb; Persist Security Info=False;";
+    //public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=DataBaseAlgoritm.mdb;";
+       
+       [System.Web.Http.HttpGet]       
+       public IHttpActionResult Get()
+    {try
         {
-            int playersCount = int.Parse(Console.ReadLine());
-            List<string> playerCards = new List<string>();
+            using OleDbConnection connection = new OleDbConnection(connectString);
+            connection.Open();
+   
 
-            for (int j = 0; j < playersCount; j++)
-            {
-                playerCards.AddRange(Console.ReadLine().Split());
-            }
 
-            string[] myCards = playerCards.Take(2).ToArray();
+            // ...
 
-            List<string> possibleTableCards = GetPossibleTableCards(myCards, playerCards);
 
-            results.Add(possibleTableCards.Count.ToString());
-            results.AddRange(possibleTableCards);
+            Logger.Log("GET request executed successfully");
+
+            return Ok();
         }
-
-        foreach (string result in results)
+        catch (Exception ex)
         {
-            Console.WriteLine(result);
+            Logger.Log($"Error executing GET request: {ex.Message}");
+
+            return InternalServerError();
+        }
+    }
+    [System.Web.Http.HttpPost]
+    public IHttpActionResult Post([FromBody] object data)
+    {
+        try
+        {
+            using (OleDbConnection connection = new OleDbConnection(connectString))
+            {
+                connection.Open();
+
+                // ...
+
+                Logger.Log("POST request executed successfully");
+
+                return Ok();
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Log($"Error executing POST request: {ex.Message}");
+
+            return InternalServerError();
         }
     }
 
-    static List<string> GetPossibleTableCards(string[] myCards, List<string> allCards)
+    [System.Web.Http.HttpPut]
+    public IHttpActionResult Put([FromBody] object data)
     {
-        List<string> possibleTableCards = new List<string>();
-
-        string[] suits = { "S", "C", "D", "H" };
-
-        // Check for Set or Pair
-        if (myCards[0][0] == myCards[1][0] || allCards.GroupBy(x => x).Any(g => g.Count() >= 3) || allCards.GroupBy(x => x[0]).Any(g => g.Count() >= 2 && g.Key != myCards[0][0]))
+        try
         {
-            possibleTableCards.Add(myCards[0]);
-            possibleTableCards.Add(myCards[1]);
-        }
-        else
-        {
-            char[] values = { 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2' };
-            foreach (char value in values)
+            using (OleDbConnection connection = new OleDbConnection(connectString))
             {
-                foreach (string suit in suits)
-                {
-                    if (myCards.Concat(allCards).Any(card => card[0] == value && card[1] == suit[0]))
-                    {
-                        possibleTableCards.Add(value.ToString() + suit);
-                        break;
-                    }
-                }
-                if (possibleTableCards.Count > 0)
-                {
-                    break;
-                }
+                connection.Open();
+
+
+                // ...
+
+                Logger.Log("PUT request executed successfully");
+
+                return Ok();
             }
         }
+        catch (Exception ex)
+        {
+            Logger.Log($"Error executing PUT request: {ex.Message}");
 
-        return possibleTableCards;
+            return InternalServerError();
+        }
+    }
+
+    [System.Web.Http.HttpDelete]
+    public IHttpActionResult Delete()
+    {
+        try
+        {
+            using (OleDbConnection connection = new OleDbConnection(connectString))
+            {
+                connection.Open();
+
+
+                // ...
+
+
+                Logger.Log("DELETE request executed successfully");
+
+                return Ok();
+            }
+        }
+        catch (Exception ex)
+        {
+
+            Logger.Log($"Error executing DELETE request: {ex.Message}");
+
+            return InternalServerError();
+        }
+    }
+}
+
+
+
+
+
+public static class Logger
+{
+    public static void Log(string message)
+    {
+
+
+        // ....
+
+
+
     }
 }
