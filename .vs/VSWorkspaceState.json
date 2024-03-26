@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Notes.Backend",
+    "\\Notes.Backend\\Notes.Backend",
+    "\\Notes.Backend\\Notes.Persistance"
+  ],
+  "SelectedNode": "\\Notes.Backend\\Notes.Persistance\\NotesDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

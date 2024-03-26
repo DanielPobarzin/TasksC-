@@ -1,0 +1,106 @@
+[
+  {
+    "ContainingType": "Notes.WebApi.Controllers.NoteController",
+    "Method": "GetAll",
+    "RelativePath": "api/Note",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Notes.Aplication.Notes.Queries.GetNoteList.NoteListVm",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Notes.WebApi.Controllers.NoteController",
+    "Method": "Create",
+    "RelativePath": "api/Note",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createNoteDto",
+        "Type": "Notes.WebApi.Models.CreateNoteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Notes.WebApi.Controllers.NoteController",
+    "Method": "Update",
+    "RelativePath": "api/Note",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateNoteDto",
+        "Type": "Notes.WebApi.Models.UpdateNoteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Notes.WebApi.Controllers.NoteController",
+    "Method": "Get",
+    "RelativePath": "api/Note/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Notes.Aplication.Notes.Queries.GetNoteDetails.NoteDetailsVm",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Notes.WebApi.Controllers.NoteController",
+    "Method": "Delete",
+    "RelativePath": "api/Note/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,16 @@
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\bin\Debug\net8.0\Notes.Aplication.deps.json
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\bin\Debug\net8.0\Notes.Aplication.dll
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\bin\Debug\net8.0\Notes.Aplication.pdb
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\bin\Debug\net8.0\Notes.Domain.dll
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\bin\Debug\net8.0\Notes.Domain.pdb
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.csproj.AssemblyReference.cache
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.AssemblyInfoInputs.cache
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.AssemblyInfo.cs
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.csproj.CoreCompileInputs.cache
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.sourcelink.json
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Ap.D09A19FA.Up2Date
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.dll
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\refint\Notes.Aplication.dll
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\Notes.Aplication.pdb
+C:\All\Learning\tasks_C#\Notes.Backend\Notes.Aplication\obj\Debug\net8.0\ref\Notes.Aplication.dll
