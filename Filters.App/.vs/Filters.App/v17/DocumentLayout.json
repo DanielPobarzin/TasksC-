@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\All\\Learning\\tasks_C#\\Filters.App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{43D7245F-1D06-47FF-A6C2-D4AF41FF232F}|..\\Filters.Application\\Filters.Application.csproj|c:\\all\\learning\\tasks_c#\\filters.application\\filters\\commands\\addcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C86634D-0D76-4C24-AA24-1C382818A963}|..\\Filters.Domain\\Filters.Domain.csproj|c:\\all\\learning\\tasks_c#\\filters.domain\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43D7245F-1D06-47FF-A6C2-D4AF41FF232F}|..\\Filters.Application\\Filters.Application.csproj|c:\\all\\learning\\tasks_c#\\filters.application\\filters.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Filters.Application",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters.Application.csproj",
+              "RelativeDocumentMoniker": "..\\Filters.Application\\Filters.Application.csproj",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters.Application.csproj",
+              "RelativeToolTip": "..\\Filters.Application\\Filters.Application.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-26T12:55:07.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddCommand.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
+              "RelativeDocumentMoniker": "..\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
+              "RelativeToolTip": "..\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T12:57:26.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Filter.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Domain\\Filter.cs",
+              "RelativeDocumentMoniker": "..\\Filters.Domain\\Filter.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Domain\\Filter.cs",
+              "RelativeToolTip": "..\\Filters.Domain\\Filter.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAA4wCgAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T11:28:43.837Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

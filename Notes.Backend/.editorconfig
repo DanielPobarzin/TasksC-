@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# IDE0021: Использовать тело блока для конструктора
-dotnet_diagnostic.IDE0021.severity = none
