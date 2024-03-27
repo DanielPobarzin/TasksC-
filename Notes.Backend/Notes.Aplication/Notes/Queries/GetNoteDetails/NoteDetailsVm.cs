@@ -17,13 +17,13 @@ namespace Notes.Aplication.Notes.Queries.GetNoteDetails
             profile.CreateMap<Note, NoteDetailsVm>()
                 .ForMember(noteVm => noteVm.Title, opt => opt.MapFrom(note => note.Title))
                 .ForMember(noteVm => noteVm.Details,
-                opt => opt.MapFrom(note => note.Details))
+                    opt => opt.MapFrom(note => note.Details))
                 .ForMember(noteVm => noteVm.Id,
-                opt => opt.MapFrom(note => note.Id))
+                    opt => opt.MapFrom(note => note.Id))
                 .ForMember(noteVm => noteVm.CreationDate,
-                opt => opt.MapFrom(note => note.CreationDate))
+                    opt => opt.MapFrom(note => note.CreationDate))
                 .ForMember(noteVm => noteVm.EditDate,
-                opt => opt.MapFrom(note => note.EditDate));
+                    opt => opt.MapFrom(note => note.EditDate));
         }
     }
 }

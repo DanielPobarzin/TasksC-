@@ -2,7 +2,7 @@
 
 namespace Notes.Aplication.Common.Mappings
 {
-    public interface IMapWith <T>
+    public interface IMapWith<T>
     {
         void Mapping(Profile profile) =>
             profile.CreateMap(typeof(T), GetType());

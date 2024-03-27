@@ -12,14 +12,14 @@ namespace Notes.Aplication.Notes.Queries.GetNoteList
     {
         public Guid Id { get; set; }
         public string Title { get; set; }  
-        public void Mappping(Profile profile)
+        public void Mapping(Profile profile)
         {
             profile.CreateMap<Note, NoteLookupDto>()
                 .ForMember(noteDto => noteDto.Id,
-                opt => opt.MapFrom(note => note.Id))
+                     opt => opt.MapFrom(note => note.Id))
                 .ForMember(noteDto => noteDto.Title,
-                opt => opt.MapFrom(note => note.Title));
-
+                     opt => opt.MapFrom(note => note.Title));
         }
+
     }
 }

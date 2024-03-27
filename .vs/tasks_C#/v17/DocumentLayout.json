@@ -1,12 +1,117 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\All\\Learning\\tasks_C#\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\DependencyInjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.Persistance\\DependencyInjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateNoteCommandHandler.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs",
+              "RelativeToolTip": "Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommandHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T14:07:39.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateNoteCommand.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs",
+              "RelativeToolTip": "Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote\\CreateNoteCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T14:07:34.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NoteController.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs",
+              "RelativeToolTip": "Notes.Backend\\Notes.WebApi\\Controllers\\NoteController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T14:06:54.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateNoteDto.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs",
+              "RelativeToolTip": "Notes.Backend\\Notes.WebApi\\Models\\CreateNoteDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T14:02:03.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Notes.Persistance.csproj",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj",
+              "RelativeToolTip": "Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-26T14:01:13.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Notes.Backend\\Notes.Persistance\\DependencyInjection.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Notes.Backend\\Notes.Persistance\\DependencyInjection.cs",
+              "RelativeToolTip": "Notes.Backend\\Notes.Persistance\\DependencyInjection.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T14:01:11.684Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

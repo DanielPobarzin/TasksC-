@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Notes.Backend",
-    "\\Notes.Backend\\Notes.Backend",
-    "\\Notes.Backend\\Notes.Persistance"
+    "\\Notes.Backend\\Notes.Aplication",
+    "\\Notes.Backend\\Notes.Aplication\\Notes",
+    "\\Notes.Backend\\Notes.Aplication\\Notes\\Commands",
+    "\\Notes.Backend\\Notes.Aplication\\Notes\\Commands\\CreateNote",
+    "\\Notes.Backend\\Notes.Aplication\\Notes\\Queries",
+    "\\Notes.Backend\\Notes.WebApi",
+    "\\Notes.Backend\\Notes.WebApi\\Controllers",
+    "\\Notes.Backend\\Notes.WebApi\\Models"
   ],
-  "SelectedNode": "\\Notes.Backend\\Notes.Persistance\\NotesDbContext.cs",
+  "SelectedNode": "\\Notes.Backend\\.editorconfig",
   "PreviewInSolutionExplorer": false
 }
