@@ -16,4 +16,9 @@
     <ProjectReference Include="..\Filters.Domain\Filters.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fuels\" />
+    <Folder Include="PowerPlantProperties\" />
+  </ItemGroup>
+
 </Project>

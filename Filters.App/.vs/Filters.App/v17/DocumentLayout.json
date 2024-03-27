@@ -3,13 +3,16 @@
   "WorkspaceRootPath": "C:\\All\\Learning\\tasks_C#\\Filters.App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{43D7245F-1D06-47FF-A6C2-D4AF41FF232F}|..\\Filters.Application\\Filters.Application.csproj|c:\\all\\learning\\tasks_c#\\filters.application\\filters\\commands\\addcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|c:\\all\\learning\\tasks_c#\\filters.app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C86634D-0D76-4C24-AA24-1C382818A963}|..\\Filters.Domain\\Filters.Domain.csproj|c:\\all\\learning\\tasks_c#\\filters.domain\\filter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|c:\\all\\learning\\tasks_c#\\filters.app\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43D7245F-1D06-47FF-A6C2-D4AF41FF232F}|..\\Filters.Application\\Filters.Application.csproj|c:\\all\\learning\\tasks_c#\\filters.application\\filters.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|c:\\all\\learning\\tasks_c#\\filters.app\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96BD6B10-F1FF-45FC-B4A1-64D7B2346B5E}|Filters.App.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,45 +22,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Filters.Application",
-              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters.Application.csproj",
-              "RelativeDocumentMoniker": "..\\Filters.Application\\Filters.Application.csproj",
-              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters.Application.csproj",
-              "RelativeToolTip": "..\\Filters.Application\\Filters.Application.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-26T12:55:07.746Z",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.App\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.App\\MainWindow.xaml*",
+              "RelativeToolTip": "MainWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T13:27:09.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AddCommand.cs",
-              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
-              "RelativeDocumentMoniker": "..\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
-              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
-              "RelativeToolTip": "..\\Filters.Application\\Filters\\Commands\\AddCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T12:57:26.074Z",
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.App\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.App\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T13:16:10.157Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Filter.cs",
-              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.Domain\\Filter.cs",
-              "RelativeDocumentMoniker": "..\\Filters.Domain\\Filter.cs",
-              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.Domain\\Filter.cs",
-              "RelativeToolTip": "..\\Filters.Domain\\Filter.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAA4wCgAAAA5AAAA",
+              "DocumentIndex": 2,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\All\\Learning\\tasks_C#\\Filters.App\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\All\\Learning\\tasks_C#\\Filters.App\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T11:28:43.837Z",
+              "WhenOpened": "2024-03-27T13:16:07.787Z",
               "EditorCaption": ""
             }
           ]
